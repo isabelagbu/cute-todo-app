@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AddTaskModalSheet extends StatefulWidget {
-  final Function(String) onSave; // ✅ Used for both add and edit
-  final String? existingTask; // ✅ If not null, modal is in edit mode
+  final Function(String) onSave; 
+  final String? existingTask;
 
   const AddTaskModalSheet({
     super.key,
     required this.onSave,
-    this.existingTask, // ✅ Optional parameter for editing tasks
+    this.existingTask,
   });
 
   @override
@@ -15,17 +15,18 @@ class AddTaskModalSheet extends StatefulWidget {
 }
 
 class _AddTaskModalSheetState extends State<AddTaskModalSheet> {
-  late TextEditingController _todoController; // ✅ Initialize in `initState()`
+
+  late TextEditingController _todoController; 
 
   @override
   void initState() {
     super.initState();
-    _todoController = TextEditingController(text: widget.existingTask ?? ""); // ✅ Pre-fill if editing
+    _todoController = TextEditingController(text: widget.existingTask ?? ""); 
   }
 
   @override
   void dispose() {
-    _todoController.dispose(); // ✅ Prevent memory leaks
+    _todoController.dispose(); 
     super.dispose();
   }
 
@@ -36,7 +37,7 @@ class _AddTaskModalSheetState extends State<AddTaskModalSheet> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 70.0),
         child: Column(
-          mainAxisSize: MainAxisSize.min, // ✅ Prevents taking full screen
+          mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: _todoController,
@@ -58,14 +59,14 @@ class _AddTaskModalSheetState extends State<AddTaskModalSheet> {
                     width: 2,
                   ),
                 ),
-                hintText: widget.existingTask == null ? "Enter your task..." : "Edit your task...", // ✅ Changes hint based on mode
+                hintText: widget.existingTask == null ? "Enter your task..." : "Edit your task...", 
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 if (_todoController.text.isNotEmpty) {
-                  widget.onSave(_todoController.text); // ✅ Call function to save changes
+                  widget.onSave(_todoController.text); 
                   Navigator.pop(context);
                 }
               },
@@ -82,7 +83,7 @@ class _AddTaskModalSheetState extends State<AddTaskModalSheet> {
                 minimumSize: const Size(150, 50),
               ),
               child: Text(
-                widget.existingTask == null ? 'Add ToDo' : 'Edit ToDo', // ✅ Changes button text dynamically
+                widget.existingTask == null ? 'Add ToDo' : 'Edit ToDo', 
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.white,
