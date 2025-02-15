@@ -74,7 +74,7 @@ class _MyHomeState extends State<MyHome> {
     return Scaffold(
       backgroundColor: const Color(0xFFEDE8DC),
       appBar: AppBar(
-        title: const Text('Isabel\'s ToDo List'),
+        title: const Text('My ToDo List'),
         backgroundColor: const Color(0xFFA5B68D),
         foregroundColor: Colors.white,
       ),
